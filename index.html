@@ -1,5 +1,136 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Bill Specht Shuffleboard League | B.S.S.L.</title><meta name="description" content="The inaugural Bill Specht Shuffleboard League, October 5–30, 2026. Presented by Bautch &amp; Prusha of IT/BC Entertainment Group. Standings and playoffs."><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23102b57'/%3E%3Ccircle cx='16' cy='16' r='10' fill='%2380c9ff'/%3E%3Ccircle cx='16' cy='16' r='6' fill='none' stroke='%23102b57' stroke-width='2'/%3E%3C/svg%3E"><link rel="stylesheet" href="style.css"><script src="teams.js" defer></script><script src="app.js" defer></script></head><body>
-<header><a class="brand" href="#"><span class="brand-initials">B.S.S.L.</span><span class="brand-detail">BILL SPECHT<br>SHUFFLEBOARD LEAGUE</span></a><nav aria-label="Main navigation"><a href="#standings">Standings</a><a href="#playoffs">Playoffs ↗</a></nav></header><main><section class="intro"><div class="intro-copy"><p class="eyebrow">INAUGURAL SEASON / OCTOBER 2026</p><h1>Bill Specht<br><span>Shuffleboard League</span></h1><p class="tagline">"It's going to be <em>Specht-tacular."</em></p><p class="presented">Presented by <strong>IT/BC Entertainment Group</strong><br>Michael Bautch &amp; Joe Prusha</p></div><img class="league-logo" src="assets/bssl-logo.png" alt="Bill Specht Shuffleboard League badge featuring a shuffleboard table and blue pucks" width="1280" height="1280"></section>
-<div class="season-strip" aria-label="Season details"><div><span class="eyebrow">THE FIRST SEASON</span><strong><time datetime="2026-10-05">Mon, October 5</time> – <time datetime="2026-10-30">Fri, October 30</time></strong></div><div><span class="eyebrow">YOUR WEEKLY MATCHUP</span><strong>Assigned every Monday</strong><span>Five days to schedule and play with your opponent.</span></div><div><span class="eyebrow">10 PLAYERS / ALL SKILL LEVELS</span><strong>New to the board? You're in good company.</strong><span>Learn together. Play together. Happy sliding!</span></div></div>
-<section id="standings"><div class="heading"><div><p class="eyebrow">01 / THE LEAGUE TABLE</p><h2>Standings</h2></div><span class="badge">Regular season</span></div><div class="table-wrap" tabindex="0" role="region" aria-label="Standings; scroll horizontally on small screens"><table><caption class="sr-only">Standings for ten individual players</caption><thead><tr><th scope="col">Rank</th><th scope="col">Player</th><th scope="col">Wins</th><th scope="col">Losses</th><th scope="col">Point Differential</th><th scope="col">Win Percentage</th></tr></thead><tbody id="rows"></tbody></table></div><div class="legend"><span><i></i> Seeds 1–6: quarterfinal bye</span><span>Seeds 7–10: opening round</span></div><p class="fine">Ranked by win percentage, then wins, then point differential. Exact ties use player name for provisional order. Everyone starts at 0–0; current seeds are alphabetical placeholders.</p></section>
-<section id="playoffs"><div class="heading"><div><p class="eyebrow">02 / THE ROAD TO BRAGGING RIGHTS</p><h2>The playoff picture</h2></div><span class="badge outline">Provisional seeds</span></div><p class="description">All 10 players are in. Seeding updates automatically from regular-season standings; the top six receive a first-round bye.</p><div class="bracket" id="bracket"></div><p class="note"><strong>Standings today. Seeds for now.</strong> Matchups are projected until the regular season ends. Later rounds show winner paths, with no results assumed.</p></section></main><footer><span>B.S.S.L. · EST. 2026</span><span>IT/BC Entertainment Group · Bautch &amp; Prusha</span></footer><noscript>Please enable JavaScript to view the standings and bracket.</noscript></body></html>
+<!doctype html>
+
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+	
+	<title>Bill Specht Shuffleboard League | B.S.S.L.</title>
+	
+	<meta name="description" content="The inaugural Bill Specht Shuffleboard League, October 5–30, 2026. Presented by Bautch &amp; Prusha of IT/BC Entertainment Group. Standings and playoffs.">
+	
+	<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23102b57'/%3E%3Ccircle cx='16' cy='16' r='10' fill='%2380c9ff'/%3E%3Ccircle cx='16' cy='16' r='6' fill='none' stroke='%23102b57' stroke-width='2'/%3E%3C/svg%3E">
+	
+	<link rel="stylesheet" href="style.css"><script src="teams.js" defer></script>
+	
+	<script src="app.js" defer></script>
+	
+	</head>
+	
+	<body>
+		
+		<header><a class="brand" href="#"><span class="brand-initials">B.S.S.L.</span><span class="brand-detail">BILL SPECHT<br>SHUFFLEBOARD LEAGUE</span></a>
+	
+	<nav aria-label="Main navigation">
+		
+		<a href="#standings">Standings</a>
+		<a href="#playoffs">Playoffs ↗</a>
+	
+	</nav>
+		
+		</header>
+		
+		
+		<main>
+			
+			<section class="intro">
+				
+				<div class="intro-copy">
+					<p class="eyebrow">OCTOBER 2026</p>
+					
+					<h1>Bill Specht <span>Shuffleboard League</span></h1>
+					
+					<p class="tagline">"It's going to be <em>Specht-tacular."</em></p>
+					
+					<p class="presented">Presented by the <strong>IT/BC Entertainment Group</strong><br>Joe Prusha &amp; Michael Bautch</p>
+				
+				</div>
+				
+				<img class="league-logo" src="assets/bssl-logo.png" alt="Bill Specht Shuffleboard League badge featuring a shuffleboard table and blue pucks" width="1280" height="1280">
+			
+			</section>
+			
+			<div class="season-strip" aria-label="Season details">
+				<div><span class="eyebrow">INAGURAL SEASON</span><strong><time datetime="2026-10-05">Mon, October 5</time> – <time datetime="2026-10-30">Fri, October 30</time></strong></div>
+				
+				<div><span class="eyebrow">WEEKLY MATCHUPS</span><strong>Assigned every Monday</strong><span>Five days to schedule and play with your opponent.</span></div>
+				
+				<!--<div><span class="eyebrow">10 PLAYERS / ALL SKILL LEVELS</span><strong>New to the board? You're in good company.</strong><span>Learn together. Play together. Happy sliding!</span></div>-->
+			
+			</div>
+			
+			<section id="standings">
+				
+				<div class="heading">
+					
+					<div>					
+					<p class="eyebrow">01 / THE LEAGUE TABLE</p>
+					
+					<h2>Standings</h2>
+					</div>
+					
+					<span class="badge">Regular season</span>
+				</div>
+				
+				<div class="table-wrap" tabindex="0" role="region" aria-label="Standings; scroll horizontally on small screens">
+					
+					<table>
+						<caption class="sr-only">Standings for ten individual players</caption>
+						
+						<thead>
+							<tr>
+								<th scope="col">Rank</th>
+								<th scope="col">Player</th>
+								<th scope="col">Wins</th>
+								<th scope="col">Losses</th>
+								<th scope="col">Point Differential</th>
+								<th scope="col">Win Percentage</th>
+							</tr>
+						</thead>
+						
+						<tbody id="rows"></tbody>
+					</table>
+				
+				</div>
+				
+				<div class="legend">
+					<span><i></i> Seeds 1–6: quarterfinal bye</span>
+					<span>Seeds 7–10: opening round</span>
+				</div>
+				
+				<p class="fine">Ranked by win percentage, then total wins, then point differential.</p>
+			</section>
+			
+			<section id="playoffs">
+				
+				<div class="heading"><div>
+					<p class="eyebrow">02 / THE ROAD TO BRAGGING RIGHTS</p>
+					
+					<h2>The playoff picture</h2></div>
+					
+					<!--<span class="badge outline">Provisional seeds</span>-->
+				
+				</div>
+				
+				<p class="description">All 10 players are in. Seeding updates automatically from regular-season standings; the top six receive a first-round bye.</p>
+				
+				<div class="bracket" id="bracket"></div>
+				
+				<p class="note">Matchups are projected until the regular season ends.</p>
+			
+			</section>
+		
+		</main>
+		
+		
+		<footer>
+			
+			<span>B.S.S.L. · EST. 2026</span>
+			<span>IT/BC Entertainment Group · Bautch &amp; Prusha</span>
+		
+		</footer>
+		
+		<noscript>Please enable JavaScript to view the standings and bracket.
+		
+		</noscript>
+	
+	</body>
+
+</html>
