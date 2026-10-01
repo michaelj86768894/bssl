@@ -33,7 +33,7 @@ const rounds=[
         }
       ],
       [
-        "D",
+        "D - 10/7 @ 3pm",
         {
           "name": "Kristi"
         },
@@ -61,7 +61,7 @@ const rounds=[
 
       ],
       [
-        "G",
+        "G - 10/6 @ 4pm",
         {
           "name": "Grube"
         },
