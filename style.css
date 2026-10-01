@@ -7,3 +7,69 @@ header{background:#102b57;border-bottom:4px solid #2463dc}.brand{gap:18px}.brand
 @media(max-width:480px){.intro{flex-direction:column-reverse;align-items:flex-start;gap:16px}.league-logo{width:145px;height:145px;align-self:center}.intro h1{font-size:34px}.intro .eyebrow{font-size:11px}.brand{gap:12px}.brand .brand-detail{padding-left:12px}header nav{justify-content:flex-start}.season-strip{padding:18px}}
 
 @media(min-width:761px){.match{flex-shrink:0}}
+
+/* Keep the page narrow; only the tournament bracket scrolls on mobile. */
+@media (max-width: 760px) {
+  .intro-copy,
+  .heading > div,
+  .brand {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .intro h1,
+  .heading h2,
+  .brand-detail {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .intro h1 {
+    font-size: clamp(1.875rem, 7vw, 2.125rem);
+    line-height: 1.15;
+  }
+
+  .intro h1 span {
+    display: block;
+  }
+
+  .bracket {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    grid-template-columns: repeat(4, 15rem);
+    gap: 1.125rem;
+    padding: 1.25rem 1rem;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+    scroll-padding-inline: 1rem;
+  }
+
+  .bracket .round {
+    min-width: 0;
+    border-bottom: 0;
+    padding-bottom: 0;
+    scroll-snap-align: start;
+  }
+
+  .bracket .matches {
+    height: 70rem;
+    justify-content: space-around;
+  }
+
+  .bracket .match {
+    flex-shrink: 0;
+  }
+
+  .bracket .match::after {
+    display: block;
+    right: -1.1875rem;
+    width: 1.125rem;
+  }
+
+  .bracket .round:last-child .match::after {
+    display: none;
+  }
+}
