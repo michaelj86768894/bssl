@@ -1,9 +1,8 @@
-// Individual players. Update names and records here; keep IDs stable and unique.
-// Point differential = points scored minus points conceded.
+// Individual players; update records here. Keep IDs stable.
 window.leagueTeams = [
   {
-    "id": "t1",
-    "name": "Bautch",
+    "id": "p-kristen",
+    "name": "Kristen",
     "wins": 0,
     "losses": 0,
     "pointDifferential": 0
@@ -11,9 +10,9 @@ window.leagueTeams = [
   {
     "id": "t2",
     "name": "Prusha",
-    "wins": 0,
+    "wins": 1,
     "losses": 0,
-    "pointDifferential": 0
+    "pointDifferential": 5
   },
   {
     "id": "t3",
@@ -67,6 +66,48 @@ window.leagueTeams = [
   {
     "id": "t10",
     "name": "Adam",
+    "wins": 0,
+    "losses": 0,
+    "pointDifferential": 0
+  },
+  {
+    "id": "p-kim",
+    "name": "Kim",
+    "wins": 0,
+    "losses": 0,
+    "pointDifferential": 0
+  },
+  {
+    "id": "p-robert",
+    "name": "Robert",
+    "wins": 0,
+    "losses": 0,
+    "pointDifferential": 0
+  },
+  {
+    "id": "p-shannon",
+    "name": "Shannon",
+    "wins": 0,
+    "losses": 0,
+    "pointDifferential": 0
+  },
+  {
+    "id": "p-jaxson",
+    "name": "Jaxson",
+    "wins": 0,
+    "losses": 0,
+    "pointDifferential": 0
+  },
+  {
+    "id": "p-hannah",
+    "name": "Hannah",
+    "wins": 0,
+    "losses": 1,
+    "pointDifferential": -5
+  },
+  {
+    "id": "p-cholka",
+    "name": "Cholka",
     "wins": 0,
     "losses": 0,
     "pointDifferential": 0
