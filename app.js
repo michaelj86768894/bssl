@@ -15,7 +15,7 @@ const rounds=[
         }
       ],
       [
-        "B",
+        "B - 10/6 @ 3pm",
 		  {
           "name": "Ferguson"
         },
