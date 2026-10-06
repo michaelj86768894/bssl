@@ -51,7 +51,7 @@ const rounds=[
         }
       ],
       [
-        "F - 10/8 @ 11am",
+        "F - 10/6 @ 1:30pm",
         {
           "name": "Tony", "result": "loser"
         },

@@ -130,5 +130,5 @@ header{background:#102b57;border-bottom:4px solid #2463dc}.brand{gap:18px}.brand
 .bracket .round { position: relative; z-index: 1; }
 .bracket .entrant.winner { color: #176337; background: #eaf7ef; font-weight: 700; }
 .bracket .entrant.loser { color: #657186; }
-.bracket .entrant.loser .name { text-decoration: line-through; text-decoration-thickness: 1.5px; }
+.bracket .entrant.loser { color: #631717; text-decoration: line-through; text-decoration-thickness: 1.5px; background: #f7eaea;}
 .bracket .entrant:last-child { border-radius: 0 0 6px 6px; }
