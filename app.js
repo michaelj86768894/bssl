@@ -53,10 +53,10 @@ const rounds=[
       [
         "F - 10/8 @ 11am",
         {
-          "name": "Tony"
+          "name": "Tony", "result": "loser"
         },
         {
-          "name": "Loretta"
+          "name": "Loretta", "result": "winner"
         }
 
       ],
@@ -113,7 +113,7 @@ const rounds=[
           "pending": true
         },
         {
-          "name": "Winner F",
+          "name": "Loretta",
           "pending": true
         }
       ],
@@ -176,4 +176,54 @@ const rounds=[
     ]
   }
 ];
-rounds.forEach((round,i)=>{const col=el('section',`round round-${i}`);col.append(el('h3','',round.name),el('p','round-note',round.note));const matches=el('div','matches');round.matches.forEach(([id,...entrants])=>{const card=el('article','match');card.setAttribute('aria-label',`Match ${id}`);card.append(el('h4','match-label',id==='Final'?'THE FINAL':`MATCH ${id}`));entrants.forEach(t=>{const line=el('div',`entrant${t.pending?' pending':''}`);line.append(el('span','name',t.name));card.append(line);});matches.append(card);});col.append(matches);document.querySelector('#bracket').append(col);});
+rounds.forEach((round,i)=>{const col=el('section',`round round-${i}`);col.append(el('h3','',round.name),el('p','round-note',round.note));const matches=el('div','matches');round.matches.forEach(([id,...entrants])=>{const card=el('article','match');card.setAttribute('aria-label',`Match ${id}`);card.append(el('h4','match-label',id==='Final'?'THE FINAL':`MATCH ${id}`));entrants.forEach(t=>{const line=el('div',`entrant${t.pending?' pending':''}${t.result === 'winner' ? ' winner' : t.result === 'loser' ? ' loser' : ''}`);line.append(el('span','name',t.name));if(t.result === 'winner' || t.result === 'loser') line.append(el('span','sr-only',t.result === 'winner' ? ' — Winner' : ' — Loser'));card.append(line);});matches.append(card);});col.append(matches);document.querySelector('#bracket').append(col);});
+
+// Add result: 'winner' or result: 'loser' to a participant to mark a result.
+// Draw actual paths between card centers, including after fonts or sizes change.
+const bracket = document.querySelector('#bracket');
+const svgNS = 'http://www.w3.org/2000/svg';
+const connectors = document.createElementNS(svgNS, 'svg');
+connectors.classList.add('bracket-connectors');
+connectors.setAttribute('aria-hidden', 'true');
+connectors.setAttribute('focusable', 'false');
+bracket.append(connectors);
+function drawConnectors() {
+  const origin = bracket.getBoundingClientRect();
+  const columns = [...bracket.querySelectorAll('.round')];
+  const local = element => {
+    const r = element.getBoundingClientRect();
+    return {left:r.left-origin.left-bracket.clientLeft+bracket.scrollLeft,
+      right:r.right-origin.left-bracket.clientLeft+bracket.scrollLeft,
+      top:r.top-origin.top-bracket.clientTop+bracket.scrollTop,
+      bottom:r.bottom-origin.top-bracket.clientTop+bracket.scrollTop};
+  };
+  const width = Math.ceil(Math.max(...columns.map(c=>local(c).right)));
+  const height = Math.ceil(Math.max(...columns.map(c=>local(c).bottom)));
+  connectors.setAttribute('width', width);
+  connectors.setAttribute('height', height);
+  connectors.replaceChildren();
+  columns.slice(0,-1).forEach((column,index)=>{
+    const sources = [...column.querySelectorAll('.match')];
+    const targets = [...columns[index+1].querySelectorAll('.match')];
+    sources.forEach((source,i)=>{
+      const target=targets[Math.floor(i/2)];
+      if(!target) return;
+      const a=local(source),b=local(target);
+      const startY=(a.top+a.bottom)/2,endY=(b.top+b.bottom)/2;
+      const midX=(a.right+b.left)/2;
+      const path=document.createElementNS(svgNS,'path');
+      path.setAttribute('d',`M ${a.right} ${startY} H ${midX} V ${endY} H ${b.left}`);
+      connectors.append(path);
+    });
+  });
+}
+let connectorFrame;
+function scheduleConnectors(){cancelAnimationFrame(connectorFrame);connectorFrame=requestAnimationFrame(drawConnectors);}
+if (typeof ResizeObserver !== 'undefined') {
+  const observer=new ResizeObserver(scheduleConnectors);
+  observer.observe(bracket);
+  bracket.querySelectorAll('.round,.match').forEach(e=>observer.observe(e));
+}
+window.addEventListener('resize',scheduleConnectors);
+if(document.fonts) document.fonts.ready.then(scheduleConnectors);
+scheduleConnectors();
