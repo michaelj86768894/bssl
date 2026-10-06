@@ -17,10 +17,10 @@ const rounds=[
       [
         "B - 10/6 @ 3pm",
 		  {
-          "name": "Ferguson"
+          "name": "Ferguson", "result": "winner"
         },
         {
-          "name": "Hannah"
+          "name": "Hannah", "result": "loser"
         }
       ],
       [
@@ -91,7 +91,7 @@ const rounds=[
           "pending": true
         },
         {
-          "name": "Winner B",
+          "name": "Ferguson",
           "pending": true
         }
       ],
