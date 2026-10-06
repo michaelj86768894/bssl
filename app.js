@@ -24,7 +24,7 @@ const rounds=[
         }
       ],
       [
-        "C",
+        "C - 10/6 @ 4pm",
         {
           "name": "Robby"
         },
@@ -63,14 +63,14 @@ const rounds=[
       [
         "G - 10/6 @ 4pm",
         {
-          "name": "Grube"
+          "name": "Grube", "result": "loser"
         },
         {
-          "name": "Kim"
+          "name": "Kim", "result": "winner"
         }
       ],
       [
-        "H",
+        "H - 10/7 @ 11am",
         {
           "name": "Hilary"
         },
@@ -120,7 +120,7 @@ const rounds=[
       [
         "Q4",
         {
-          "name": "Winner G",
+          "name": "Kim",
           "pending": true
         },
         {
