@@ -26,10 +26,10 @@ const rounds=[
       [
         "C - 10/6 @ 4pm",
         {
-          "name": "Robby"
+          "name": "Robby", "result": "winner"
         },
         {
-          "name": "Kristen"
+          "name": "Kristen", "result": "loser"
         }
       ],
       [
@@ -98,7 +98,7 @@ const rounds=[
       [
         "Q2",
         {
-          "name": "Winner C",
+          "name": "Robby",
           "pending": true
         },
         {
