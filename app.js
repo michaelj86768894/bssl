@@ -17,19 +17,19 @@ const rounds=[
       [
         "B - 10/6 @ 3pm",
 		  {
-          "name": "Ferguson", "result": "winner"
+          "name": "Ferguson 2", "result": "winner"
         },
         {
-          "name": "Hannah", "result": "loser"
+          "name": "Hannah 0", "result": "loser"
         }
       ],
       [
         "C - 10/6 @ 4pm",
         {
-          "name": "Robby", "result": "winner"
+          "name": "Robby 2", "result": "winner"
         },
         {
-          "name": "Kristen", "result": "loser"
+          "name": "Kristen 0", "result": "loser"
         }
       ],
       [
@@ -53,20 +53,20 @@ const rounds=[
       [
         "F - 10/6 @ 1:30pm",
         {
-          "name": "Tony", "result": "loser"
+          "name": "Tony 0", "result": "loser"
         },
         {
-          "name": "Loretta", "result": "winner"
+          "name": "Loretta 2", "result": "winner"
         }
 
       ],
       [
         "G - 10/6 @ 4pm",
         {
-          "name": "Grube", "result": "loser"
+          "name": "Grube 0", "result": "loser"
         },
         {
-          "name": "Kim", "result": "winner"
+          "name": "Kim 2", "result": "winner"
         }
       ],
       [
