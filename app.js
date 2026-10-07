@@ -6,7 +6,7 @@ const rounds=[
     "note": "Week 1 \u00b7 October 5\u20139",
     "matches": [
       [
-        "A",
+        "A - 10/8 @ 4pm",
         {
           "name": "Westhoff"
         },
@@ -35,14 +35,14 @@ const rounds=[
       [
         "D - 10/7 @ 3pm",
         {
-          "name": "Kristi"
+          "name": "Kristi 2", "result": "winner"
         },
         {
-          "name": "Shannon"
+          "name": "Shannon 0", "result": "loser"
         }
       ],
       [
-        "E",
+        "E - 10/12 @ TBD",
         {
           "name": "Adam"
         },
@@ -85,9 +85,9 @@ const rounds=[
     "note": "Week 2 \u00b7 October 12\u201316",
     "matches": [
       [
-        "Q1",
+        "Q1 - 10/8 @ 4:30pm",
         {
-          "name": "Winner A",
+          "name": "Cholka/Westhoff",
           "pending": true
         },
         {
@@ -102,14 +102,14 @@ const rounds=[
           "pending": true
         },
         {
-          "name": "Winner D",
+          "name": "Kristi",
           "pending": true
         }
       ],
       [
         "Q3",
         {
-          "name": "Winner E",
+          "name": "Adam/Prusha",
           "pending": true
         },
         {
