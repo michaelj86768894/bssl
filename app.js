@@ -72,10 +72,10 @@ const rounds=[
       [
         "H - 10/7 @ 11am",
         {
-          "name": "Hilary"
+          "name": "Hilary 1", "result": "loser"
         },
         {
-          "name": "Jaxson"
+          "name": "Jaxson 2", "result": "winner"
         }
       ]
     ]
@@ -124,7 +124,7 @@ const rounds=[
           "pending": true
         },
         {
-          "name": "Winner H",
+          "name": "Jaxson",
           "pending": true
         }
       ]
