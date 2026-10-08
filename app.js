@@ -118,12 +118,10 @@ const rounds=[
       [
         "Q4",
         {
-          "name": "Kim",
-          "pending": true
+          "name": "Kim 0", "result": "loser"
         },
         {
-          "name": "Jaxson",
-          "pending": true
+          "name": "Jaxson 2", "result": "winner"
         }
       ]
     ]
@@ -150,7 +148,7 @@ const rounds=[
           "pending": true
         },
         {
-          "name": "Winner Q4",
+          "name": "Jaxson",
           "pending": true
         }
       ]
