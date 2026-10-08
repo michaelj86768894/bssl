@@ -3,19 +3,19 @@ const el=(tag,cls,value)=>{const n=document.createElement(tag);if(cls)n.classNam
 const rounds=[
   {
     "name": "Round of 16",
-    "note": "Week 1 \u00b7 October 5\u20139",
+    "note": "October 5\u20139",
     "matches": [
       [
-        "A - 10/8 @ 4pm",
+        "A - 10/8 @ 4p",
         {
-          "name": "Westhoff"
+          "name": "Westhoff 0", "result": "loser"
         },
         {
-          "name": "Cholka"
+          "name": "Cholka 2", "result": "winner"
         }
       ],
       [
-        "B - 10/6 @ 3pm",
+        "B - 10/6 @ 3p",
 		  {
           "name": "Ferguson 2", "result": "winner"
         },
@@ -24,7 +24,7 @@ const rounds=[
         }
       ],
       [
-        "C - 10/6 @ 4pm",
+        "C - 10/6 @ 4p",
         {
           "name": "Robby 2", "result": "winner"
         },
@@ -33,7 +33,7 @@ const rounds=[
         }
       ],
       [
-        "D - 10/7 @ 3pm",
+        "D - 10/7 @ 3p",
         {
           "name": "Kristi 2", "result": "winner"
         },
@@ -51,7 +51,7 @@ const rounds=[
         }
       ],
       [
-        "F - 10/6 @ 1:30pm",
+        "F - 10/6 @ 1:30p",
         {
           "name": "Tony 0", "result": "loser"
         },
@@ -61,7 +61,7 @@ const rounds=[
 
       ],
       [
-        "G - 10/6 @ 4pm",
+        "G - 10/6 @ 4p",
         {
           "name": "Grube 0", "result": "loser"
         },
@@ -70,7 +70,7 @@ const rounds=[
         }
       ],
       [
-        "H - 10/7 @ 11am",
+        "H - 10/7 @ 11a",
         {
           "name": "Hilary 1", "result": "loser"
         },
@@ -82,17 +82,15 @@ const rounds=[
   },
   {
     "name": "Quarterfinals",
-    "note": "Week 2 \u00b7 October 12\u201316",
+    "note": "October 12\u201316",
     "matches": [
       [
-        "Q1 - 10/8 @ 4:30pm",
+        "Q1 - 10/8 @ 4:30p",
         {
-          "name": "Cholka/Westhoff",
-          "pending": true
+          "name": "Cholka 0", "result": "loser"
         },
         {
-          "name": "Ferguson",
-          "pending": true
+          "name": "Ferguson 2", "result": "winner"
         }
       ],
       [
@@ -132,12 +130,12 @@ const rounds=[
   },
   {
     "name": "Semifinals",
-    "note": "Week 3 \u00b7 October 19\u201323",
+    "note": "October 19\u201323",
     "matches": [
       [
         "S1",
         {
-          "name": "Winner Q1",
+          "name": "Ferguson",
           "pending": true
         },
         {
@@ -160,7 +158,7 @@ const rounds=[
   },
   {
     "name": "Championship",
-    "note": "Week 4 \u00b7 October 26\u201330",
+    "note": "October 27",
     "matches": [
       [
         "Final",
@@ -176,54 +174,84 @@ const rounds=[
     ]
   }
 ];
-rounds.forEach((round,i)=>{const col=el('section',`round round-${i}`);col.append(el('h3','',round.name),el('p','round-note',round.note));const matches=el('div','matches');round.matches.forEach(([id,...entrants])=>{const card=el('article','match');card.setAttribute('aria-label',`Match ${id}`);card.append(el('h4','match-label',id==='Final'?'THE FINAL':`MATCH ${id}`));entrants.forEach(t=>{const line=el('div',`entrant${t.pending?' pending':''}${t.result === 'winner' ? ' winner' : t.result === 'loser' ? ' loser' : ''}`);line.append(el('span','name',t.name));if(t.result === 'winner' || t.result === 'loser') line.append(el('span','sr-only',t.result === 'winner' ? ' — Winner' : ' — Loser'));card.append(line);});matches.append(card);});col.append(matches);document.querySelector('#bracket').append(col);});
+// Proposed only: opening-round losers still need to confirm participation.
+// Keep placeholders until the optional bracket is approved.
+const redemptionRounds = [
+  {name:'Redemption quarterfinals',note:'October 12–16',matches:[
+    ['R1',{name:'Westhoff',pending:true},{name:'Hannah',pending:true}],
+    ['R2',{name:'Kristen',pending:true},{name:'Shannon',pending:true}],
+    ['R3',{name:'Adam/Prusha',pending:true},{name:'Tony',pending:true}],
+    ['R4',{name:'Grube',pending:true},{name:'HIlary',pending:true}]
+  ]},
+  {name:'Redemption semifinals',note:'October 19–23',matches:[
+    ['RS1',{name:'Winner R1',pending:true},{name:'Winner R2',pending:true}],
+    ['RS2',{name:'Winner R3',pending:true},{name:'Winner R4',pending:true}]
+  ]},
+  {name:'Redemption championship',note:'October 27',matches:[
+    ['Consolation Championship',{name:'Winner RS1',pending:true},{name:'Winner RS2',pending:true}]
+  ]}
+];
 
-// Add result: 'winner' or result: 'loser' to a participant to mark a result.
-// Draw actual paths between card centers, including after fonts or sizes change.
+// Opening round is shared. Main winners advance right; opening losers advance left.
 const bracket = document.querySelector('#bracket');
-const svgNS = 'http://www.w3.org/2000/svg';
-const connectors = document.createElementNS(svgNS, 'svg');
-connectors.classList.add('bracket-connectors');
-connectors.setAttribute('aria-hidden', 'true');
-connectors.setAttribute('focusable', 'false');
-bracket.append(connectors);
-function drawConnectors() {
-  const origin = bracket.getBoundingClientRect();
-  const columns = [...bracket.querySelectorAll('.round')];
-  const local = element => {
-    const r = element.getBoundingClientRect();
-    return {left:r.left-origin.left-bracket.clientLeft+bracket.scrollLeft,
-      right:r.right-origin.left-bracket.clientLeft+bracket.scrollLeft,
-      top:r.top-origin.top-bracket.clientTop+bracket.scrollTop,
-      bottom:r.bottom-origin.top-bracket.clientTop+bracket.scrollTop};
-  };
-  const width = Math.ceil(Math.max(...columns.map(c=>local(c).right)));
-  const height = Math.ceil(Math.max(...columns.map(c=>local(c).bottom)));
-  connectors.setAttribute('width', width);
-  connectors.setAttribute('height', height);
-  connectors.replaceChildren();
-  columns.slice(0,-1).forEach((column,index)=>{
-    const sources = [...column.querySelectorAll('.match')];
-    const targets = [...columns[index+1].querySelectorAll('.match')];
+const layout = [
+{round:redemptionRounds[2],side:'redemption',label:'Championship'},
+  {round:redemptionRounds[1],side:'redemption',label:'Semifinals'},
+  {round:redemptionRounds[0],side:'redemption',label:'Quarterfinals'},
+  {round:rounds[0],side:'opening',label:'Round 1'},
+  {round:rounds[1],side:'main',label:'Quarterfinals'},
+  {round:rounds[2],side:'main',label:'Semifinals'},
+  {round:rounds[3],side:'main',label:'Championship'}
+];
+layout.forEach(({round,side,label},i)=>{
+  const col=el('section',`round combined-round side-${side}${i===0||i===6?' final-round':''}`);
+  col.dataset.column=i;
+  const heading=el('div','round-heading');
+  heading.append(el('p','branch-label',side==='main'?'':side==='opening'?'':'Consolation'),el('h3','',label),el('p','round-note',round.note));
+  col.append(heading);
+  const matches=el('div','matches');
+  matches.style.setProperty('--match-count',round.matches.length);
+  round.matches.forEach(([id,...entrants])=>{
+    const card=el('article','match');card.setAttribute('aria-label',`Match ${id}`);
+    card.append(el('h4','match-label',id==='Final'?'Championship':`MATCH ${id}`));
+    entrants.forEach(t=>{
+      const result=t.result==='winner'?'winner':t.result==='loser'?'loser':'';
+      const line=el('div',`entrant${t.pending?' pending':''}${result?' '+result:''}`);
+      line.append(el('span','name',t.name));
+      if(result)line.append(el('span','sr-only',` — ${result}`));
+      card.append(line);
+    });matches.append(card);
+  });col.append(matches);bracket.append(col);
+});
+const svgNS='http://www.w3.org/2000/svg';
+const connectors=document.createElementNS(svgNS,'svg');
+connectors.classList.add('bracket-connectors');connectors.setAttribute('aria-hidden','true');bracket.append(connectors);
+const links=[[3,2],[2,1],[1,0],[3,4],[4,5],[5,6]];
+function drawConnectors(){
+  const origin=bracket.getBoundingClientRect();
+  const cols=[...bracket.querySelectorAll('.round')];
+  const local=e=>{const r=e.getBoundingClientRect();return {left:r.left-origin.left-bracket.clientLeft+bracket.scrollLeft,right:r.right-origin.left-bracket.clientLeft+bracket.scrollLeft,top:r.top-origin.top-bracket.clientTop+bracket.scrollTop,bottom:r.bottom-origin.top-bracket.clientTop+bracket.scrollTop}};
+  connectors.setAttribute('width',Math.ceil(Math.max(...cols.map(c=>local(c).right))));
+  connectors.setAttribute('height',Math.ceil(Math.max(...cols.map(c=>local(c).bottom))));connectors.replaceChildren();
+  links.forEach(([from,to])=>{
+    const sources=[...cols[from].querySelectorAll('.match')],targets=[...cols[to].querySelectorAll('.match')];
     sources.forEach((source,i)=>{
-      const target=targets[Math.floor(i/2)];
-      if(!target) return;
-      const a=local(source),b=local(target);
-      const startY=(a.top+a.bottom)/2,endY=(b.top+b.bottom)/2;
-      const midX=(a.right+b.left)/2;
-      const path=document.createElementNS(svgNS,'path');
-      path.setAttribute('d',`M ${a.right} ${startY} H ${midX} V ${endY} H ${b.left}`);
-      connectors.append(path);
+      const a=local(source),b=local(targets[Math.floor(i/2)]),left=to<from;
+      const x1=left?a.left:a.right,x2=left?b.right:b.left,mid=(x1+x2)/2;
+      const path=document.createElementNS(svgNS,'path');path.setAttribute('d',`M ${x1} ${(a.top+a.bottom)/2} H ${mid} V ${(b.top+b.bottom)/2} H ${x2}`);connectors.append(path);
     });
   });
 }
-let connectorFrame;
-function scheduleConnectors(){cancelAnimationFrame(connectorFrame);connectorFrame=requestAnimationFrame(drawConnectors);}
-if (typeof ResizeObserver !== 'undefined') {
-  const observer=new ResizeObserver(scheduleConnectors);
-  observer.observe(bracket);
-  bracket.querySelectorAll('.round,.match').forEach(e=>observer.observe(e));
+function centerOpening(){
+  const opening=bracket.querySelector('.side-opening');
+  const a=opening.getBoundingClientRect(),b=bracket.getBoundingClientRect();
+  bracket.scrollLeft+=a.left-b.left-bracket.clientLeft+a.width/2-bracket.clientWidth/2;
 }
-window.addEventListener('resize',scheduleConnectors);
-if(document.fonts) document.fonts.ready.then(scheduleConnectors);
-scheduleConnectors();
+let frame;
+function schedule(){cancelAnimationFrame(frame);frame=requestAnimationFrame(drawConnectors)}
+if(typeof ResizeObserver!=='undefined'){
+  const observer=new ResizeObserver(schedule);observer.observe(bracket);bracket.querySelectorAll('.round,.match').forEach(e=>observer.observe(e));
+}
+window.addEventListener('resize',schedule);
+const ready=()=>requestAnimationFrame(()=>{drawConnectors();centerOpening()});
+if(document.fonts)document.fonts.ready.then(ready);else ready();

@@ -129,6 +129,61 @@ header{background:#102b57;border-bottom:4px solid #2463dc}.brand{gap:18px}.brand
 }
 .bracket .round { position: relative; z-index: 1; }
 .bracket .entrant.winner { color: #176337; background: #eaf7ef; font-weight: 700; }
-.bracket .entrant.loser { color: #657186; }
-.bracket .entrant.loser { color: #631717; text-decoration: line-through; text-decoration-thickness: 1.5px; background: #f7eaea;}
+.bracket .entrant.loser { color: #631717; background: #f7eaea;}
 .bracket .entrant:last-child { border-radius: 0 0 6px 6px; }
+
+/* Optional consolation preview: four opening games, two semifinals, one final. */
+.redemption-bracket { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.redemption-bracket .matches { height: 25rem; }
+.redemption-bracket .round-0 .matches { grid-template-rows: repeat(4, minmax(0, 1fr)); }
+.redemption-bracket .round-1 .matches { grid-template-rows: repeat(2, minmax(0, 1fr)); }
+.redemption-bracket .round-2 .matches { grid-template-rows: minmax(0, 1fr); }
+.redemption-bracket .round:last-child .match { border-color: var(--ink); }
+.redemption-bracket .round:last-child .match-label { background: #163d79; color: var(--lime); border-radius: 5px 5px 0 0; }
+#redemption .heading { flex-wrap: wrap; }
+@media (max-width: 760px) {
+  .redemption-bracket { grid-template-columns: repeat(3, 15rem); }
+}
+
+/* Shared opening round with two outward paths. */
+.combined-bracket {
+  grid-template-columns: repeat(7, minmax(10.5rem, 1fr));
+  gap: 1.25rem;
+  width: 100%; max-width: 100%; min-width: 0;
+  overflow-x: auto; overscroll-behavior-x: contain;
+  scroll-snap-type: x proximity; scroll-padding-inline: 1rem;
+}
+.combined-bracket .round { border: 0; padding-bottom: 0; min-width: 0; scroll-snap-align: center; }
+.combined-bracket .round-heading { min-height: 8rem; text-align: center; }
+.combined-bracket .branch-label { font-size: 12px; font-weight: 700; color: #28558e; margin: 0 0 8px; }
+.combined-bracket .matches { height: 50rem; grid-template-rows: repeat(var(--match-count), minmax(0, 1fr)); }
+.combined-bracket .final-round .match { border-color: var(--ink); }
+.combined-bracket .final-round .match-label { background: #163d79; color: var(--lime); border-radius: 5px 5px 0 0; }
+.combined-bracket .side-opening .match { border-color: #2463dc; }
+.bracket-directions { font-size: 14px; line-height: 1.6; color: #28558e; }
+.consolation-status { font-size: 13px; line-height: 1.6; color: var(--muted); margin-bottom: 20px; }
+@media(max-width:760px) { .combined-bracket { grid-template-columns: repeat(7,15rem); } }
+
+/* Give all seven columns the desktop width, without widening the intro. */
+@media (min-width: 1024px) {
+  main { max-width: none; padding-inline: 2vw; }
+  main > :not(#playoffs) { max-width: 1188px; margin-inline: auto; }
+  .combined-bracket {
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: clamp(10px, 1.2vw, 24px);
+    padding-inline: clamp(12px, 1.2vw, 24px);
+    scroll-snap-type: none;
+  }
+  .combined-bracket .round-heading,
+  .combined-bracket .match-label { overflow-wrap: anywhere; }
+  .combined-bracket .match { min-width: 0; width: 100%; }
+  .combined-bracket .entrant .name { min-width: 0; }
+}
+
+/* Allow wrapped match times and player names some room on smaller laptops. */
+@media (min-width: 1024px) and (max-width: 1399px) {
+  .combined-bracket .matches { height: 60rem; }
+  .combined-bracket .entrant { font-size: 13px; padding-inline: 7px; }
+  .combined-bracket .match-label { font-size: 11px; padding-inline: 7px; }
+  .combined-bracket .round h3 { font-size: 14px; }
+}
