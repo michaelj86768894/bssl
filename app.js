@@ -94,7 +94,7 @@ const rounds=[
         }
       ],
       [
-        "Q2",
+        "Q2 - 10/13 @ 3p",
         {
           "name": "Robby",
           "pending": true
@@ -116,7 +116,7 @@ const rounds=[
         }
       ],
       [
-        "Q4",
+        "Q4 - 10/8 @ 5p",
         {
           "name": "Kim 0", "result": "loser"
         },
