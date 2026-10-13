@@ -42,7 +42,7 @@ const rounds=[
         }
       ],
       [
-        "E - 10/12 @ TBD",
+        "E - 10/13 @ 4p",
         {
           "name": "Adam"
         },
@@ -94,7 +94,7 @@ const rounds=[
         }
       ],
       [
-        "Q2 - 10/13 @ 3p",
+        "Q2 - 10/14 @ 2:30p",
         {
           "name": "Robby",
           "pending": true
@@ -211,7 +211,7 @@ layout.forEach(({round,side,label},i)=>{
   matches.style.setProperty('--match-count',round.matches.length);
   round.matches.forEach(([id,...entrants])=>{
     const card=el('article','match');card.setAttribute('aria-label',`Match ${id}`);
-    card.append(el('h4','match-label',id==='Final'?'Championship':`MATCH ${id}`));
+    card.append(el('h4','match-label',id==='Final'?'Championship':` ${id}`));
     entrants.forEach(t=>{
       const result=t.result==='winner'?'winner':t.result==='loser'?'loser':'';
       const line=el('div',`entrant${t.pending?' pending':''}${result?' '+result:''}`);
