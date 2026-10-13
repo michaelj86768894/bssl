@@ -44,10 +44,10 @@ const rounds=[
       [
         "E - 10/13 @ 4p",
         {
-          "name": "Adam"
+          "name": "Adam 2", "result": "winner"
         },
         {
-          "name": "Prusha"
+          "name": "Prusha 0", "result": "loser"
         }
       ],
       [
@@ -107,7 +107,7 @@ const rounds=[
       [
         "Q3",
         {
-          "name": "Adam/Prusha",
+          "name": "Adam",
           "pending": true
         },
         {
@@ -178,7 +178,7 @@ const redemptionRounds = [
   {name:'Redemption quarterfinals',note:'October 12–16',matches:[
     ['R1',{name:'Westhoff',pending:true},{name:'Hannah',pending:true}],
     ['R2',{name:'Kristen',pending:true},{name:'Shannon',pending:true}],
-    ['R3',{name:'Adam/Prusha',pending:true},{name:'Tony',pending:true}],
+    ['R3',{name:'Prusha',pending:true},{name:'Tony',pending:true}],
     ['R4',{name:'Grube',pending:true},{name:'HIlary',pending:true}]
   ]},
   {name:'Redemption semifinals',note:'October 19–23',matches:[
