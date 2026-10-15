@@ -105,14 +105,12 @@ const rounds=[
         }
       ],
       [
-        "Q3",
+        "Q1 - 10/15 @ 2:30p",
         {
-          "name": "Adam",
-          "pending": true
+          "name": "Adam 2", "result": "winner"
         },
         {
-          "name": "Loretta",
-          "pending": true
+          "name": "Loretta 1", "result": "loser"
         }
       ],
       [
@@ -144,7 +142,7 @@ const rounds=[
       [
         "S2",
         {
-          "name": "Adam/Loretta",
+          "name": "Adam",
           "pending": true
         },
         {
