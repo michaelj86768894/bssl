@@ -178,12 +178,12 @@ const redemptionRounds = [
   {name:'Redemption quarterfinals',note:'October 12–16',matches:[
     ['R1',{name:'Westhoff',pending:true},{name:'Hannah',pending:true}],
     ['R2',{name:'Kristen',pending:true},{name:'Shannon',pending:true}],
-    ['R3',{name:'Prusha',pending:true},{name:'Tony',pending:true}],
+    ['R3',{name:'Prusha 2',pending:true},{name:'Tony 1',pending:true}],
     ['R4',{name:'Grube',pending:true},{name:'HIlary',pending:true}]
   ]},
   {name:'Redemption semifinals',note:'October 19–23',matches:[
     ['RS1',{name:'Winner R1',pending:true},{name:'Winner R2',pending:true}],
-    ['RS2',{name:'Winner R3',pending:true},{name:'Winner R4',pending:true}]
+    ['RS2',{name:'Prusha',pending:true},{name:'Winner R4',pending:true}]
   ]},
   {name:'Redemption championship',note:'October 27',matches:[
     ['Consolation Championship',{name:'Winner RS1',pending:true},{name:'Winner RS2',pending:true}]
