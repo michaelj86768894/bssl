@@ -137,14 +137,14 @@ const rounds=[
           "pending": true
         },
         {
-          "name": "Winner Q2",
+          "name": "Robby/Kristi",
           "pending": true
         }
       ],
       [
         "S2",
         {
-          "name": "Winner Q3",
+          "name": "Adam/Loretta",
           "pending": true
         },
         {
@@ -178,12 +178,12 @@ const redemptionRounds = [
   {name:'Redemption quarterfinals',note:'October 12–16',matches:[
     ['R1',{name:'Westhoff',pending:true},{name:'Hannah',pending:true}],
     ['R2',{name:'Kristen',pending:true},{name:'Shannon',pending:true}],
-    ['R3',{name:'Prusha 2',pending:true},{name:'Tony 1',pending:true}],
+    ['R3 - 10/15 @ 2pm',{name:'Prusha 2 ', "result": "winner",pending:true},{name:'Tony 1 ', "result": "loser", pending:true}],
     ['R4',{name:'Grube',pending:true},{name:'HIlary',pending:true}]
   ]},
   {name:'Redemption semifinals',note:'October 19–23',matches:[
-    ['RS1',{name:'Winner R1',pending:true},{name:'Winner R2',pending:true}],
-    ['RS2',{name:'Prusha',pending:true},{name:'Winner R4',pending:true}]
+    ['RS1',{name:'Westhoff/Hannah',pending:true},{name:'Kristen/Shannon',pending:true}],
+    ['RS2',{name:'Prusha',pending:true},{name:'Grube/Hilary',pending:true}]
   ]},
   {name:'Redemption championship',note:'October 27',matches:[
     ['Consolation Championship',{name:'Winner RS1',pending:true},{name:'Winner RS2',pending:true}]
