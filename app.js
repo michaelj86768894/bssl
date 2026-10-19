@@ -96,12 +96,10 @@ const rounds=[
       [
         "Q2 - 10/19 @ 2p",
         {
-          "name": "Robby",
-          "pending": true
+          "name": "Robby 0", "result": "loser"
         },
         {
-          "name": "Kristi",
-          "pending": true
+          "name": "Kristi 2","result": "winner"
         }
       ],
       [
@@ -135,7 +133,7 @@ const rounds=[
           "pending": true
         },
         {
-          "name": "Robby/Kristi",
+          "name": "Kristi",
           "pending": true
         }
       ],
