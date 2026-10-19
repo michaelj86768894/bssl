@@ -94,7 +94,7 @@ const rounds=[
         }
       ],
       [
-        "Q2 - 10/14 @ 2:30p",
+        "Q2 - 10/19 @ 2p",
         {
           "name": "Robby",
           "pending": true
@@ -177,11 +177,11 @@ const redemptionRounds = [
     ['R1',{name:'Westhoff',pending:true},{name:'Hannah',pending:true}],
     ['R2',{name:'Kristen',pending:true},{name:'Shannon',pending:true}],
     ['R3 - 10/15 @ 2pm',{name:'Prusha 2 ', "result": "winner",pending:true},{name:'Tony 1 ', "result": "loser", pending:true}],
-    ['R4',{name:'Grube',pending:true},{name:'HIlary',pending:true}]
+    ['R4 - 10/16',{name:'Grube 2', "result": "winner",pending:true},{name:'Hilary 0', "result": "loser", pending:true}]
   ]},
   {name:'Redemption semifinals',note:'October 19–23',matches:[
     ['RS1',{name:'Westhoff/Hannah',pending:true},{name:'Kristen/Shannon',pending:true}],
-    ['RS2',{name:'Prusha',pending:true},{name:'Grube/Hilary',pending:true}]
+    ['RS2',{name:'Prusha',pending:true},{name:'Grube',pending:true}]
   ]},
   {name:'Redemption championship',note:'October 27',matches:[
     ['Consolation Championship',{name:'Winner RS1',pending:true},{name:'Winner RS2',pending:true}]
