@@ -173,8 +173,8 @@ const rounds=[
 const redemptionRounds = [
   {name:'Redemption quarterfinals',note:'October 12–16',matches:[
     ['R1',{name:'Westhoff',pending:true},{name:'Hannah',pending:true}],
-    ['R2',{name:'Kristen',pending:true},{name:'Shannon',pending:true}],
-    ['R3 - 10/15 @ 2pm',{name:'Prusha 2 ', "result": "winner",pending:true},{name:'Tony 1 ', "result": "loser", pending:true}],
+    ['R2 - 10/20 @ 3p',{name:'Kristen',pending:true},{name:'Shannon',pending:true}],
+    ['R3 - 10/15 @ 2p',{name:'Prusha 2 ', "result": "winner",pending:true},{name:'Tony 1 ', "result": "loser", pending:true}],
     ['R4 - 10/16',{name:'Grube 2', "result": "winner",pending:true},{name:'Hilary 0', "result": "loser", pending:true}]
   ]},
   {name:'Redemption semifinals',note:'October 19–23',matches:[
