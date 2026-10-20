@@ -1,1 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Better U Crew - Year End Awards</title>
 
+
+	<style>
+	  /* ==============================		 Base Page		 ============================== */
+
+	  body {
+		font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+		padding: 20px;
+		/* Option 1: Using a image file */
+		  background: url(https://st.depositphotos.com/1692993/4351/i/450/depositphotos_43519371-stock-photo-red-velvet-curtain-with-texture.jpg) no-repeat center center fixed; 
+		  background-size: cover;
+		/* background: #f4f4f9; */
+		color: #444;
+	  }
+
+	  .header {
+		text-align: center;
+		margin-bottom: 25px;
+		color: #fff;
+	  }
+
+	  .intro-text {
+		max-width: 1200px;
+		margin: 10px auto;
+		line-height: 1.5;
+		color: #fff;
+	  }
+
+
+	  /* ==============================		 Main Layout		 ============================== */
+
+	  .container {
+		display: flex;
+		gap: 20px;
+		max-width: 1200px;
+		margin: auto;
+		height: 80vh;
+	  }
+
+
+	  /* ==============================		 Nominee Sidebar		 ============================== */
+
+	  .sidebar {
+		width: 30%;
+		background: #fff;
+		padding: 20px;
+		border-radius: 8px;
+		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+		display: flex;
+		flex-direction: column;
+	  }
+
+	  .sidebar-instruction {
+		font-size: 12px;
+		color: #444;
+		margin-top: -5px;
+	  }
+
+	  #staff-list {
+		overflow-y: auto;
+		padding-right: 10px;
+		flex-grow: 1;
+	  }
+
+
+	  /* ==============================		 Awards Grid		 ============================== */
+
+	  .awards {
+		width: 70%;
+		background: #fff;
+		padding: 20px;
+		border-radius: 8px;
+		box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 15px;
+		overflow-y: auto;
+		max-height: 100%;
+	  }
+
+	  .award-card {
+		background: #fafafa;
+		border: 1px solid #e0e0e0;
+		border-radius: 6px;
+		padding: 12px;
+	  }
+
+	  .award-card h4 {
+		margin: 0 0 8px 0;
+		font-size: 15px;
+		color: #960019;
+	  }
+
+	  .award-description {
+		font-size: 11px;
+		color: #444;
+		margin: 2px 0 6px 0;
+	  }
+
+
+	  /* ==============================		 Drag & Drop		 ============================== */
+
+	  .draggable {
+		padding: 10px;
+		margin: 6px 0;
+		background: #f0f0f0;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		cursor: grab;
+		user-select: none;
+		font-weight: 500;
+	  }
+
+	  .draggable.disabled {
+		opacity: 0.3;
+		cursor: not-allowed;
+		background: #e0e0e0;
+		text-decoration: line-through;
+	  }
+
+	  .drop-zone {
+		border: 2px dashed #bbb;
+		min-height: 42px;
+		border-radius: 4px;
+		padding: 5px;
+		background: #fff;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	  }
+
+	  .drop-zone.filled {
+		border-color: #960019;
+		background: #fff5f5;
+		border-style: solid;
+	  }
+
+	  .drop-zone .draggable {
+		margin: 0;
+		width: 100%;
+		text-align: center;
+		background: #960019;
+		color: white;
+		border: none;
+	  }
+
+
+	  /* ==============================		 Scrollbars		 ============================== */
+
+	  #staff-list::-webkit-scrollbar,
+	  .awards::-webkit-scrollbar {
+		width: 6px;
+	  }
+
+	  #staff-list::-webkit-scrollbar-thumb,
+	  .awards::-webkit-scrollbar-thumb {
+		background-color: #ccc;
+		border-radius: 4px;
+	  }
+
+
+	  /* ==============================		 Submit Button		 ============================== */
+
+	  .submit-wrapper {
+		text-align: center;
+	  }
+
+	  .submit-btn {
+		background: #960019;
+		color: white;
+		border: 2px solid #fff;
+		padding: 12px 28px;
+		border-radius: 6px;
+		cursor: pointer;
+		font-size: 16px;
+		font-weight: bold;
+		margin-top: 25px;
+	  }
+
+	  .submit-btn:hover {
+		background: #700013;
+	  }
+
+
+	  /* ==============================		 Backup Modal		 ============================== */
+
+	  .modal {
+		display: none;
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background: rgba(0, 0, 0, 0.6);
+		align-items: center;
+		justify-content: center;
+	  }
+
+	  .modal-content {
+		background: #fff;
+		padding: 25px;
+		border-radius: 8px;
+		max-width: 500px;
+		width: 90%;
+		text-align: center;
+	  }
+
+	  .modal-divider {
+		border: 0;
+		border-top: 1px solid #eee;
+		margin: 15px 0;
+	  }
+
+	  .modal-description {
+		font-size: 14px;
+		color: #666;
+	  }
+
+	  .report-box {
+		width: 100%;
+		height: 120px;
+		margin: 15px 0;
+		padding: 10px;
+		font-family: monospace;
+		font-size: 13px;
+		box-sizing: border-box;
+	  }
+
+	  .secondary-btn {
+		background: #960019;
+		color: white;
+		border: none;
+		padding: 8px 16px;
+		border-radius: 4px;
+		cursor: pointer;
+		margin-top: 10px;
+	  }
+
+	  .secondary-btn.close-btn {
+		background: #888;
+	  }
+		
+/* Drag hover visual feedback */
+	.drop-zone.drag-over {
+	  border-color: #d4af37 !important; /* Gold outline */
+	  background-color: #fffdf0 !important; /* Subtle warm glow */
+	  box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+	}
+	</style>
+
+</head>
+
+<body>
+
+  <div class="header">
+
+    <h2>🏆 2026 Cousins Subs Academy Awards</h2>
+
+    <p class="intro-text">
+      Welcome to the 2026 Cousins Subs Academy Awards! As a distinguished voter,
+      you are tasked with deciding who takes home the ultimate office glory this year.
+      Scroll through the nominees, drag them into their designated categories, and hit submit.
+      Each team member is eligible for <strong>one</strong> win only, so make your votes count!
+    </p>
+
+  </div>
+
+
+  <div class="container">
+
+    <!-- Staff List Pool -->
+    <div class="sidebar">
+
+      <h3>Nominees</h3>
+
+      <p class="sidebar-instruction">
+        Drag a nominee to an award box on the right.
+      </p>
+
+      <!-- This inner div handles the name scrolling -->
+      <div id="staff-list">
+
+        <div class="draggable" draggable="true" id="user-1">Adam Levetzow</div>
+        <div class="draggable" draggable="true" id="user-2">Ali Lazcano</div>
+        <div class="draggable" draggable="true" id="user-3">Amber Alonzo</div>
+        <div class="draggable" draggable="true" id="user-4">Chris Cholka</div>
+        <div class="draggable" draggable="true" id="user-5">Christine Specht</div>
+        <div class="draggable" draggable="true" id="user-6">Courtney Hendricks</div>
+        <div class="draggable" draggable="true" id="user-7">Crystal Zak</div>
+        <div class="draggable" draggable="true" id="user-8">Hannah Airoldi</div>
+        <div class="draggable" draggable="true" id="user-9">Hilary Krekling</div>
+        <div class="draggable" draggable="true" id="user-10">Jason Westhoff</div>
+        <div class="draggable" draggable="true" id="user-11">Jaxson Washburn</div>
+        <div class="draggable" draggable="true" id="user-12">Jeff Daane</div>
+        <div class="draggable" draggable="true" id="user-13">Jen Benes</div>
+        <div class="draggable" draggable="true" id="user-14">JJ Grube</div>
+        <div class="draggable" draggable="true" id="user-15">JJ Palmert</div>
+        <div class="draggable" draggable="true" id="user-16">Joe Ferguson</div>
+        <div class="draggable" draggable="true" id="user-17">Joe Prusha</div>
+        <div class="draggable" draggable="true" id="user-36">Joe Sharkey</div>
+		<div class="draggable" draggable="true" id="user-18">Jon Klopp</div>
+        <div class="draggable" draggable="true" id="user-19">Judy Milanowski</div>
+        <div class="draggable" draggable="true" id="user-20">Kim Lesch</div>
+        <div class="draggable" draggable="true" id="user-21">Kristen Tracy</div>
+        <div class="draggable" draggable="true" id="user-22">Kristi Kramp</div>
+        <div class="draggable" draggable="true" id="user-23">Loretta Wegner</div>
+        <div class="draggable" draggable="true" id="user-24">Maja Gettrust</div>
+        <div class="draggable" draggable="true" id="user-25">Mark Lalasz</div>
+        <div class="draggable" draggable="true" id="user-26">Matthew Knoke</div>
+        <div class="draggable" draggable="true" id="user-27">Matthew Somoles</div>
+        <div class="draggable" draggable="true" id="user-28">Maya Jones</div>
+        <div class="draggable" draggable="true" id="user-29">Mike Bautch</div>
+        <div class="draggable" draggable="true" id="user-30">Robby Gogin</div>
+        <div class="draggable" draggable="true" id="user-31">Ron Willman</div>
+        <div class="draggable" draggable="true" id="user-32">Ryan Timm</div>
+        <div class="draggable" draggable="true" id="user-33">Sam McFarland</div>
+        <div class="draggable" draggable="true" id="user-34">Shannon Trudeau</div>
+        <div class="draggable" draggable="true" id="user-35">Tony Scott</div>
+
+      </div>
+    </div>
+
+
+    <!-- Award Categories Grid -->
+    <div class="awards">
+
+      <div class="award-card">
+        <h4>Most Likely to Answer Emails at 10</h4>
+        <p class="award-description">47 PM: or the late-night worker who is still clearing out their inbox long after the sun goes down and normal business hours have ended.</p>
+        <div class="drop-zone" data-category="Most Likely to Answer Emails at 10"></div>
+      </div>
+
+      <div class="award-card">
+        <h4>Office Therapist Award</h4>
+        <p class="award-description">For the person with an open door, a comfy chair, and the best listening ear whenever you need to vent or talk things through.</p>
+        <div class="drop-zone" data-category="Office Therapist Award"></div>
+      </div>
+
+      <div class="award-card">
+        <h4>Calm in the Chaos</h4>
+        <p class="award-description">For the steady presence who keeps a cool head and doesn&#x27;t sweat it, no matter how crazy or unpredictable things get.</p>
+        <div class="drop-zone" data-category="Calm in the Chaos"></div>
+      </div>
+
+      <div class="award-card">
+        <h4>Spreadsheet Wizard</h4>
+        <p class="award-description">For the Excel mastermind who works absolute magic with formulas, pivot tables, and color-coded data.</p>
+        <div class="drop-zone" data-category="Spreadsheet Wizard"></div>
+      </div>
+
+      <div class="award-card">
+        <h4>Most Likely to Bring Snacks</h4>
+        <p class="award-description">For the office hero who keeps the team fueled and happy by constantly bringing in treats to share.</p>
+        <div class="drop-zone" data-category="Most Likely to Bring Snacks"></div>
+      </div>
+
+      <div class="award-card">
+        <h4>Most likely to be found at the Keurig machine</h4>
+        <p class="award-description">For the resident caffeine enthusiast who is practically powered by the breakroom coffee pot.</p>
+        <div class="drop-zone" data-category="Most likely to be found at the Keurig machine"></div>
+      </div>
+
+      <div class="award-card">
+        <h4>The “Makes Everyone’s Job Easier” Award</h4>
+        <p class="award-description">For the person who proactively steps up, streamlines tasks, and removes roadblocks to make day-to-day life easier for the whole team.</p>
+        <div class="drop-zone" data-category="The “Makes Everyone’s Job Easier” Award"></div>
+      </div>
+
+      <div class="award-card">
+        <h4>Fix-It Before Anyone Notices Award</h4>
+        <p class="award-description">For the employee quietly solving problems behind the scenes before they become everyone else’s issue.</p>
+        <div class="drop-zone" data-category="Fix-It Before Anyone Notices Award"></div>
+      </div>
+
+      <div class="award-card">
+        <h4>The “How Do You Even Know That?” Award</h4>
+        <p class="award-description">For the go-to person stocked with endless random trivia, obscure facts, and niche knowledge that leaves everyone wondering where they picked it up.</p>
+        <div class="drop-zone" data-category="The “How Do You Even Know That?” Award"></div>
+      </div>
+
+      <div class="award-card">
+        <h4>Team Glue Award</h4>
+        <p class="award-description">For the person who keeps communication, teamwork, and people together — especially during stressful moments.</p>
+        <div class="drop-zone" data-category="Team Glue Award"></div>
+      </div>
+
+      <div class="award-card">
+        <h4>Glow-Up Award</h4>
+        <p class="award-description">For the person who showed huge growth in confidence, leadership, skill, or ownership this year.</p>
+        <div class="drop-zone" data-category="Glow-Up Award"></div>
+      </div>
+
+      <div class="award-card">
+        <h4>Chaos Coordinator Award</h4>
+        <p class="award-description">For the person juggling 47 things at once and somehow keeping everything moving.</p>
+        <div class="drop-zone" data-category="Chaos Coordinator Award"></div>
+      </div>
+
+      <div class="award-card">
+        <h4>Human Swiss Army Knife Award</h4>
+        <p class="award-description">For the employee who can jump into almost anything and help.</p>
+        <div class="drop-zone" data-category="Human Swiss Army Knife Award"></div>
+      </div>
+
+      <div class="award-card">
+        <h4>Most Likely to Reply in 0.3 Seconds Award</h4>
+        <p class="award-description">Perfect for your ultra-responsive employees.</p>
+        <div class="drop-zone" data-category="Most Likely to Reply in 0.3 Seconds Award"></div>
+      </div>
+
+      <div class="award-card">
+        <h4>Above &amp; Beyond Without Asking Award</h4>
+        <p class="award-description">For the person who consistently does more than expected without needing recognition.</p>
+        <div class="drop-zone" data-category="Above &amp; Beyond Without Asking Award"></div>
+      </div>
+
+      <div class="award-card">
+        <h4>Meeting MVP Award</h4>
+        <p class="award-description">For the employee who actually moves meetings forward instead of just sitting there silently.</p>
+        <div class="drop-zone" data-category="Meeting MVP Award"></div>
+      </div>
+
+      <div class="award-card">
+        <h4>Culture Carrier Award</h4>
+        <p class="award-description">For someone who naturally represents the company’s values without forcing it.</p>
+        <div class="drop-zone" data-category="Culture Carrier Award"></div>
+      </div>
+
+      <div class="award-card">
+        <h4>Unsung Hero Award</h4>
+        <p class="award-description">For the person quietly behind the scenes making a huge impact and doing heavy lifting, but telling no one.</p>
+        <div class="drop-zone" data-category="Unsung Hero Award"></div>
+      </div>
+
+      <div class="award-card">
+        <h4>The Reliable Since Day One Award</h4>
+        <p class="award-description">For longtime dependable employees who consistently deliver.</p>
+        <div class="drop-zone" data-category="The Reliable Since Day One Award"></div>
+      </div>
+
+      <div class="award-card">
+        <h4>Positive Pressure Award</h4>
+        <p class="award-description">For the person whose work ethic naturally motivates everyone else to level up.</p>
+        <div class="drop-zone" data-category="Positive Pressure Award"></div>
+      </div>
+
+      <div class="award-card">
+        <h4>Work Bestie to All Award</h4>
+        <p class="award-description">For the employee who somehow has strong relationships with literally everyone.</p>
+        <div class="drop-zone" data-category="Work Bestie to All Award"></div>
+      </div>
+
+      <div class="award-card">
+        <h4>Sneaker King/Queen of the office</h4>
+        <p class="award-description">For the person whose footwear choice always gets noticed</p>
+        <div class="drop-zone" data-category="Sneaker King/Queen of the office"></div>
+      </div>
+
+      <div class="award-card">
+        <h4>Stanley Cup Champion</h4>
+        <p class="award-description">Person who always had a cup of water in their hand</p>
+        <div class="drop-zone" data-category="Stanley Cup Champion"></div>
+      </div>
+
+      <div class="award-card">
+        <h4>Most Likely to be the next &quot;Jake from State Farm&quot;</h4>
+        <div class="drop-zone" data-category="Most Likely to be the next &quot;Jake from State Farm&quot;"></div>
+      </div>
+
+      <div class="award-card">
+        <h4>The “I Have a Guy” Award</h4>
+        <p class="award-description">For the person who somehow has a connection for literally everything.</p>
+        <div class="drop-zone" data-category="The “I Have a Guy” Award"></div>
+      </div>
+
+      <div class="award-card">
+        <h4>Office Historian Award</h4>
+        <p class="award-description">For the person who remembers classic Cousins history, from past LTOs and retired menu items to old operational procedures and why things were built the way they are.</p>
+        <div class="drop-zone" data-category="Office Historian Award"></div>
+      </div>
+
+      <div class="award-card">
+        <h4>Human Calendar Award</h4>
+        <p class="award-description">For the person who somehow knows where everyone is, what everyone is doing and when everyone is out.</p>
+        <div class="drop-zone" data-category="Human Calendar Award"></div>
+      </div>
+
+      <div class="award-card">
+        <h4>Office News Award</h4>
+        <p class="award-description">For the person who somehow hears everything through the grapevine first and always stays in the loop on what&#x27;s happening around the office.</p>
+        <div class="drop-zone" data-category="Office News Award"></div>
+      </div>
+
+      <div class="award-card">
+        <h4>The “Did You See This?” Award</h4>
+        <p class="award-description">For the person constantly sending links, screenshots, memes and things everyone absolutely needs to see.</p>
+        <div class="drop-zone" data-category="The “Did You See This?” Award"></div>
+      </div>
+
+      <div class="award-card">
+        <h4>Office DJ Award</h4>
+        <p class="award-description">For the person who always has the playlist, song recommendation or perfect office soundtrack ready.</p>
+        <div class="drop-zone" data-category="Office DJ Award"></div>
+      </div>
+
+      <div class="award-card">
+        <h4>Most Likely to Have a Story for That</h4>
+        <p class="award-description">For the person who always has a story, connection or oddly relevant anecdote.</p>
+        <div class="drop-zone" data-category="Most Likely to Have a Story for That"></div>
+      </div>
+
+      <div class="award-card">
+        <h4>Most Likely to Make Everyone Laugh</h4>
+        <p class="award-description">For the person who can find the funny side of almost any situation.</p>
+        <div class="drop-zone" data-category="Most Likely to Make Everyone Laugh"></div>
+      </div>
+
+      <div class="award-card">
+        <h4>Most Likely to Be Wearing Company Swag</h4>
+        <p class="award-description">For the person who is basically a walking advertisement for the company.</p>
+        <div class="drop-zone" data-category="Most Likely to Be Wearing Company Swag"></div>
+      </div>
+
+      <div class="award-card">
+        <h4>Most Likely to Say “I’ll Figure It Out”</h4>
+        <p class="award-description">For the person who doesn&#x27;t necessarily have the answer — yet — but somehow always finds one.</p>
+        <div class="drop-zone" data-category="Most Likely to Say “I’ll Figure It Out”"></div>
+      </div>
+
+      <div class="award-card">
+        <h4>Most Likely to Have a Backup Plan</h4>
+        <p class="award-description">For the person who already has Plan B — and probably Plan C — before anyone else realizes Plan A is in trouble.</p>
+        <div class="drop-zone" data-category="Most Likely to Have a Backup Plan"></div>
+      </div>
+
+      <div class="award-card">
+        <h4>The &quot;Mute Button&quot; Award</h4>
+        <p class="award-description">For the person who routinely talks on mute before realizing it.</p>
+        <div class="drop-zone" data-category="The &quot;Mute Button&quot; Award"></div>
+      </div>
+
+      <div class="award-card">
+        <h4>The &quot;Email Novelist&quot; Award</h4>
+        <p class="award-description">For the person whose emails double as epic short stories, complete with full backstories.</p>
+        <div class="drop-zone" data-category="The &quot;Email Novelist&quot; Award"></div>
+      </div>
+
+      <div class="award-card">
+        <h4>5-Star Breakroom Chef</h4>
+        <p class="award-description">For the person whose lunch always smells incredible and looks like it was plated by a 5-star chef while the rest of us eat leftovers.</p>
+        <div class="drop-zone" data-category="5-Star Breakroom Chef"></div>
+      </div>
+
+      <div class="award-card">
+        <h4>Rock Solid</h4>
+        <p class="award-description">For the person who is the definition of consistent—same high quality, same great attitude, every single day.</p>
+        <div class="drop-zone" data-category="Rock Solid"></div>
+      </div>
+
+      <div class="award-card">
+        <h4>Breakfast Club</h4>
+        <p class="award-description">For the early bird who is always in the office working before the lights are fully turned on.</p>
+        <div class="drop-zone" data-category="Breakfast Club"></div>
+      </div>
+
+      <div class="award-card">
+        <h4>The Sugar &amp; Spice Award</h4>
+        <p class="award-description">For the genuinely nice person whose default setting is pure kindness, warmth, and positivity toward everyone.</p>
+        <div class="drop-zone" data-category="The Sugar &amp; Spice Award"></div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="submit-wrapper">
+    <button type="button" class="submit-btn" onclick="submitVotes()">
+      Submit Votes
+    </button>
+  </div>
+
+
+  <!-- Backup Modal UI -->
+  <div id="backup-modal" class="modal">
+
+    <div class="modal-content">
+
+      <h3>Votes Generated!</h3>
+
+      <p>A draft email should have opened automatically in Outlook. Just click "SEND" and your votes will be submitted!</p>
+
+      <hr class="modal-divider">
+
+      <p class="modal-description">
+        Outlook didn't open? Copy your formatted votes below and manually send an email to
+        <strong>michael.bautch@cousinssubs.com</strong>:
+      </p>
+
+      <textarea id="report-text" class="report-box" readonly></textarea>
+
+      <button class="secondary-btn" onclick="copyReport()">
+        📋 Copy Votes to Clipboard
+      </button>
+
+      <button class="secondary-btn close-btn" onclick="closeModal()">
+        Close
+      </button>
+
+    </div>
+  </div>
+
+
+<script>
+    let selectedPeople = new Set();
+
+    // Setup Drag Events
+    document.querySelectorAll('.draggable').forEach(item => {
+      item.addEventListener('dragstart', e => {
+        if (item.classList.contains('disabled')) {
+          e.preventDefault();
+          return;
+        }
+
+        e.dataTransfer.setData('text/plain', item.id);
+      });
+    });
+
+
+    // Setup Drop Zones
+    document.querySelectorAll('.drop-zone').forEach(zone => {
+
+      // Allow drop
+      zone.addEventListener('dragover', e => {
+        e.preventDefault();
+      });
+
+      // Highlight box when dragging OVER it
+      zone.addEventListener('dragenter', e => {
+        e.preventDefault();
+        zone.classList.add('drag-over');
+      });
+
+      // Remove highlight when dragging AWAY
+      zone.addEventListener('dragleave', e => {
+        zone.classList.remove('drag-over');
+      });
+
+      // Handle the drop
+      zone.addEventListener('drop', e => {
+        e.preventDefault();
+        zone.classList.remove('drag-over'); // Clean up highlight on drop
+
+        const id = e.dataTransfer.getData('text/plain');
+        const draggedElement = document.getElementById(id);
+
+        if (!draggedElement) return;
+
+        // If zone already has a vote, reset previous person back to pool
+        if (zone.children.length > 0) {
+          const oldPersonId = zone.children[0].dataset.personId;
+
+          selectedPeople.delete(oldPersonId);
+
+          document.getElementById(oldPersonId).classList.remove('disabled');
+
+          zone.innerHTML = '';
+        }
+
+        // Add clone to drop zone
+        const clone = draggedElement.cloneNode(true);
+
+        clone.dataset.personId = id;
+
+        zone.appendChild(clone);
+        zone.classList.add('filled');
+
+        // Lock out person from other categories
+        selectedPeople.add(id);
+
+        draggedElement.classList.add('disabled');
+      });
+
+    });
+
+
+    function submitVotes() {
+
+      let emailBody = "BUC END OF YEAR AWARD VOTES:\n\n";
+      let hasVotes = false;
+
+      document.querySelectorAll('.drop-zone').forEach(zone => {
+
+        const category = zone.dataset.category;
+
+        const winner =
+          zone.children.length > 0
+            ? zone.children[0].innerText
+            : "No Vote";
+
+        emailBody += `${category}: ${winner}\n`;
+
+        if (zone.children.length > 0) {
+          hasVotes = true;
+        }
+
+      });
+
+
+      if (!hasVotes) {
+        alert("Please cast at least one vote before submitting!");
+        return;
+      }
+
+
+      // 1. Trigger Outlook Mailto
+      const recipient = "michael.bautch@cousinssubs.com";
+      const subject = encodeURIComponent("BUC End of Year Award Votes");
+      const body = encodeURIComponent(emailBody);
+
+      window.location.href =
+        `mailto:${recipient}?subject=${subject}&body=${body}`;
+
+
+      // 2. Populate and display backup screen immediately
+      document.getElementById('report-text').value = emailBody;
+
+      document.getElementById('backup-modal').style.display = 'flex';
+
+    }
+
+
+    function copyReport() {
+
+      const copyText = document.getElementById("report-text");
+
+      copyText.select();
+
+      navigator.clipboard.writeText(copyText.value);
+
+      alert("Votes copied to clipboard!");
+
+    }
+
+
+    function closeModal() {
+
+      document.getElementById('backup-modal').style.display = 'none';
+
+    }
+  </script>
+
+</body>
+</html>
