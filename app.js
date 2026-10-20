@@ -170,14 +170,14 @@ const rounds=[
 // Keep placeholders until the optional bracket is approved.
 const redemptionRounds = [
   {name:'Redemption quarterfinals',note:'October 12–16',matches:[
-    ['R1',{name:'Westhoff',pending:true},{name:'Hannah',pending:true}],
+    ['R1 - 10/20',{name:'Westhoff 1 ', "result": "loser"},{name:'Hannah 2 ', "result": "winner"}],
     ['R2 - 10/21',{name:'Kristen',pending:true},{name:'Shannon',pending:true}],
     ['R3 - 10/15 @ 2p',{name:'Prusha 2 ', "result": "winner",pending:true},{name:'Tony 1 ', "result": "loser"}],
     ['R4 - 10/16',{name:'Grube 2', "result": "winner",pending:true},{name:'Hilary 0', "result": "loser", pending:true}]
   ]},
   {name:'Redemption semifinals',note:'October 19–23',matches:[
-    ['RS1',{name:'Westhoff/Hannah',pending:true},{name:'Kristen/Shannon',pending:true}],
-    ['RS2',{name:'Prusha 1 ', "result": "winner"},{name:'Grube 0', "result": "loser"}]
+    ['RS1',{name:'Hannah',pending:true},{name:'Kristen/Shannon',pending:true}],
+    ['RS2 - 10/20',{name:'Prusha 2', "result": "winner"},{name:'Grube 0', "result": "loser"}]
   ]},
   {name:'Redemption championship',note:'October 27',matches:[
     ['Consolation Championship',{name:'Winner RS1',pending:true},{name:'Prusha',pending:true}]
