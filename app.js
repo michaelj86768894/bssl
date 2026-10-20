@@ -127,7 +127,7 @@ const rounds=[
     "note": "October 19\u201323",
     "matches": [
       [
-        "S1",
+        "S1 10/22 3:30p",
         {
           "name": "Ferguson",
           "pending": true
@@ -138,14 +138,12 @@ const rounds=[
         }
       ],
       [
-        "S2",
+        "S2 10/20 3:30p",
         {
-          "name": "Adam",
-          "pending": true
+          "name": "Adam 2", "result": "winner"
         },
         {
-          "name": "Jaxson",
-          "pending": true
+          "name": "Jaxson 0", "result": "loser"
         }
       ]
     ]
@@ -161,7 +159,7 @@ const rounds=[
           "pending": true
         },
         {
-          "name": "Winner S2",
+          "name": "Adam",
           "pending": true
         }
       ]
@@ -173,16 +171,16 @@ const rounds=[
 const redemptionRounds = [
   {name:'Redemption quarterfinals',note:'October 12–16',matches:[
     ['R1',{name:'Westhoff',pending:true},{name:'Hannah',pending:true}],
-    ['R2 - 10/20 @ 3p',{name:'Kristen',pending:true},{name:'Shannon',pending:true}],
-    ['R3 - 10/15 @ 2p',{name:'Prusha 2 ', "result": "winner",pending:true},{name:'Tony 1 ', "result": "loser", pending:true}],
+    ['R2 - 10/21',{name:'Kristen',pending:true},{name:'Shannon',pending:true}],
+    ['R3 - 10/15 @ 2p',{name:'Prusha 2 ', "result": "winner",pending:true},{name:'Tony 1 ', "result": "loser"}],
     ['R4 - 10/16',{name:'Grube 2', "result": "winner",pending:true},{name:'Hilary 0', "result": "loser", pending:true}]
   ]},
   {name:'Redemption semifinals',note:'October 19–23',matches:[
     ['RS1',{name:'Westhoff/Hannah',pending:true},{name:'Kristen/Shannon',pending:true}],
-    ['RS2',{name:'Prusha',pending:true},{name:'Grube',pending:true}]
+    ['RS2',{name:'Prusha 1 ', "result": "winner"},{name:'Grube 0', "result": "loser"}]
   ]},
   {name:'Redemption championship',note:'October 27',matches:[
-    ['Consolation Championship',{name:'Winner RS1',pending:true},{name:'Winner RS2',pending:true}]
+    ['Consolation Championship',{name:'Winner RS1',pending:true},{name:'Prusha',pending:true}]
   ]}
 ];
 
